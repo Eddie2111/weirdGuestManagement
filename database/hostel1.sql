@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.4
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 16, 2022 at 10:33 AM
--- Server version: 10.1.37-MariaDB
--- PHP Version: 5.6.39
+-- Generation Time: Apr 16, 2022 at 06:11 AM
+-- Server version: 10.4.21-MariaDB
+-- PHP Version: 7.3.31
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -33,7 +32,7 @@ CREATE TABLE `admin` (
   `username` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `password` varchar(300) NOT NULL,
-  `reg_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `reg_date` timestamp NOT NULL DEFAULT current_timestamp(),
   `updation_date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -47,26 +46,6 @@ INSERT INTO `admin` (`id`, `username`, `email`, `password`, `reg_date`, `updatio
 -- --------------------------------------------------------
 
 --
--- Table structure for table `contactedus`
---
-
-CREATE TABLE `contactedus` (
-  `id` int(5) NOT NULL,
-  `name` varchar(45) NOT NULL,
-  `email` varchar(45) NOT NULL,
-  `message` varchar(800) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `contactedus`
---
-
-INSERT INTO `contactedus` (`id`, `name`, `email`, `message`) VALUES
-(1, 'Jane smith', 'football@gmail.com', 'hello there,\r\n\r\nI\'am rubel hossain the player of the world!');
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `courses`
 --
 
@@ -75,7 +54,7 @@ CREATE TABLE `courses` (
   `course_code` varchar(255) NOT NULL,
   `course_sn` varchar(255) NOT NULL,
   `course_fn` varchar(255) NOT NULL,
-  `posting_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `posting_date` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -125,7 +104,7 @@ CREATE TABLE `registration` (
   `pmntCity` varchar(500) NOT NULL,
   `pmnatetState` varchar(500) NOT NULL,
   `pmntPincode` int(11) NOT NULL,
-  `postingDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `postingDate` timestamp NOT NULL DEFAULT current_timestamp(),
   `updationDate` varchar(500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -148,7 +127,7 @@ CREATE TABLE `rooms` (
   `seater` int(11) NOT NULL,
   `room_no` int(11) NOT NULL,
   `fees` int(11) NOT NULL,
-  `posting_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `posting_date` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -230,7 +209,7 @@ INSERT INTO `states` (`id`, `State`) VALUES
 
 CREATE TABLE `userregistration` (
   `id` int(11) NOT NULL,
-  `ssn` varchar(255) NOT NULL,
+  `regNo` varchar(255) NOT NULL,
   `firstName` varchar(255) NOT NULL,
   `middleName` varchar(255) NOT NULL,
   `lastName` varchar(255) NOT NULL,
@@ -238,7 +217,7 @@ CREATE TABLE `userregistration` (
   `contactNo` bigint(20) NOT NULL,
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `regDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `regDate` timestamp NOT NULL DEFAULT current_timestamp(),
   `updationDate` varchar(45) NOT NULL,
   `passUdateDate` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -247,15 +226,10 @@ CREATE TABLE `userregistration` (
 -- Dumping data for table `userregistration`
 --
 
-INSERT INTO `userregistration` (`id`, `ssn`, `firstName`, `middleName`, `lastName`, `gender`, `contactNo`, `email`, `password`, `regDate`, `updationDate`, `passUdateDate`) VALUES
+INSERT INTO `userregistration` (`id`, `regNo`, `firstName`, `middleName`, `lastName`, `gender`, `contactNo`, `email`, `password`, `regDate`, `updationDate`, `passUdateDate`) VALUES
 (23, '10125', 'First', 'Second', 'Third', 'male', 88010101010, 'test5@testmail.com', 'abc123', '2021-12-22 16:21:09', '', ''),
 (26, '1010256', 'Kevin', 'Symonn', 'Patrick', 'male', 1704050603, 'test6@testmail.com', 'abc123', '2021-12-24 10:28:19', '', ''),
-(27, '20101073', 'temp', 'temp', 'temp', 'male', 65, 'test@testmail.com', 'abc123', '2022-04-05 16:43:39', '', ''),
-(28, '10254963', 'jane', 'smith', 'fiona', 'male', 778541236, 'somemail@test.com', 'apassword', '2022-04-16 08:19:34', '', ''),
-(29, '321321', 'jane', 'smith', 'fiona', 'male', 321321321321, 'somemail1@test.com', 'apass', '2022-04-16 08:23:23', '', ''),
-(30, '321321', 'jane', 'smith', 'fiona', 'male', 321321321321, 'somemail11@test.com', 'apass', '2022-04-16 08:25:20', '', ''),
-(31, '321321', 'jane', 'smith', 'fiona', 'male', 321321321321, 'somemail12@test.com', 'apass', '2022-04-16 08:28:21', '', ''),
-(32, '321321', 'jane', 'smith', 'fiona', 'male', 321321321321, 'somemail12@test.com', 'asa', '2022-04-16 08:28:30', '', '');
+(27, '20101073', 'temp', 'temp', 'temp', 'male', 65, 'test@testmail.com', 'abc123', '2022-04-05 16:43:39', '', '');
 
 --
 -- Indexes for dumped tables
@@ -265,12 +239,6 @@ INSERT INTO `userregistration` (`id`, `ssn`, `firstName`, `middleName`, `lastNam
 -- Indexes for table `admin`
 --
 ALTER TABLE `admin`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `contactedus`
---
-ALTER TABLE `contactedus`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -314,12 +282,6 @@ ALTER TABLE `admin`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `contactedus`
---
-ALTER TABLE `contactedus`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
 -- AUTO_INCREMENT for table `courses`
 --
 ALTER TABLE `courses`
@@ -347,7 +309,7 @@ ALTER TABLE `states`
 -- AUTO_INCREMENT for table `userregistration`
 --
 ALTER TABLE `userregistration`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
