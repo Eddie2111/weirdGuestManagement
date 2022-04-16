@@ -46,7 +46,8 @@ header("location:dashboard.php");
 <script type="text/javascript">
 function valid()
 	{
-	if(document.registration.password.value!= document.registration.cpassword.value){ alert("Password and Re-Type Password Field do not match  !!");
+	if(document.registration.password.value!= document.registration.cpassword.value){ 
+			alert("Password and Re-Type Password Field do not match  !!");
 		document.registration.cpassword.focus();
 		return false;
 	}
@@ -63,7 +64,7 @@ function valid()
 
 				<div class="row">
 					<div class="col-md-12">
-					
+					<br/><br/>
 						<h2 class="page-title">User Login </h2>
 
 						<div class="row">

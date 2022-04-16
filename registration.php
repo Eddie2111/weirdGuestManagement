@@ -3,7 +3,7 @@ session_start();
 include('includes/config.php');
 if(isset($_POST['submit']))
 {
-$regno=$_POST['regno'];
+$ssn=$_POST['ssn'];
 $fname=$_POST['fname'];
 $mname=$_POST['mname'];
 $lname=$_POST['lname'];
@@ -11,11 +11,12 @@ $gender=$_POST['gender'];
 $contactno=$_POST['contact'];
 $emailid=$_POST['email'];
 $password=$_POST['password'];
-$query="insert into userRegistration(regNo,firstName,middleName,lastName,gender,contactNo,email,password) values(?,?,?,?,?,?,?,?)";
+$query="insert into userRegistration(ssn,firstName,middleName,lastName,gender,contactNo,email,password) values(?,?,?,?,?,?,?,?)";
 $stmt = $mysqli->prepare($query);
-$rc=$stmt->bind_param('sssssiss',$regno,$fname,$mname,$lname,$gender,$contactno,$emailid,$password);
+$rc=$stmt->bind_param('sssssiss',$ssn,$fname,$mname,$lname,$gender,$contactno,$emailid,$password);
 $stmt->execute();
 echo"<script>alert('Registration Complete! Please Login to proceed. ');</script>";
+
 header("Location: login.php");
 }
 ?>
@@ -48,8 +49,9 @@ return true;
 		<div class="content-wrapper">
 			<div class="container-fluid">
 				<div class="row">
+					<br/><br/>
 					<div class="col-md-12">
-						<h2 class="page-title">Student Registration </h2>
+						<h2 class="page-title">Client Registration </h2>
 
 						<div class="row">
 							<div class="col-md-12">
@@ -61,9 +63,9 @@ return true;
 										
 
 <div class="form-group">
-<label class="col-sm-2 control-label"> Registration No : </label>
+<label class="col-sm-2 control-label"> Social Security No : </label>
 <div class="col-sm-8">
-<input type="text" name="regno" id="styling"  class="form-control" required="required" >
+<input type="text" name="ssn" id="styling"  class="form-control" required="required" >
 </div>
 </div>
 
@@ -179,7 +181,7 @@ function checkAvailability() {
 			},
 			error:function (){
 				event.preventDefault();
-				alert('error');
+				alert('error' + 'If you think there is a problem, contact us immediately');
 			}
 		});
 	}
