@@ -79,9 +79,7 @@ $stmt=$mysqli->prepare("SELECT username,email,password,id FROM admin WHERE (user
 	<script src="js/main.js"></script>
 </body>
 
-<div class="foot"><footer>
-<p> Brought To You By <a href="https://code-projects.org/">Code-Projects</p>
-</footer> </div>
+
 
 
 <style> .foot{text-align: center; border: 1px solid black;}</style>

@@ -57,11 +57,9 @@
 									<thead>
 										<tr>
 											<th>Sno.</th>
-										
 											<th>Seater</th>
 											<th>Room No.</th>
 											<th>Fees (PM) </th>
-
 											<th>Posting Date  </th>
 											<th>Action</th>
 										</tr>
